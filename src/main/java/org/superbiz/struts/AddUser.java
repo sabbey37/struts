@@ -17,11 +17,21 @@
 */
 package org.superbiz.struts;
 
+import org.springframework.stereotype.Component;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.transaction.Transactional;
 import java.util.Properties;
 
+@Component
 public class AddUser {
+
+    private final UserService service;
+
+    public AddUser(UserService service) {
+        this.service = service;
+    }
 
     private int id;
     private String firstName;
@@ -60,6 +70,7 @@ public class AddUser {
         this.id = id;
     }
 
+    @Transactional
     public String execute() {
 
         try {

@@ -17,12 +17,21 @@
  */
 package org.superbiz.struts;
 
+import org.springframework.stereotype.Component;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import java.util.List;
 import java.util.Properties;
 
+@Component
 public class ListAllUsers {
+
+    private final UserService service;
+
+    public ListAllUsers(UserService service) {
+        this.service = service;
+    }
 
     private int id;
     private String errorMessage;
